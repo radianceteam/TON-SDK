@@ -19,6 +19,7 @@ extern crate ton_types;
 #[macro_use]
 extern crate ton_vm;
 extern crate ton_abi;
+extern crate ton_block_json;
 
 #[macro_use]
 extern crate serde_derive;
@@ -28,6 +29,7 @@ extern crate ed25519_dalek;
 extern crate sha2;
 extern crate base64;
 extern crate chrono;
+extern crate failure;
 extern crate crc_any;
 
 #[cfg(feature = "node_interaction")]
@@ -80,6 +82,8 @@ pub mod queries_helper;
 #[cfg(feature = "node_interaction")]
 mod requests_helper;
 
+#[cfg(feature = "node_interaction")]
+mod check_proofs;
 pub mod json_helper;
 
 
