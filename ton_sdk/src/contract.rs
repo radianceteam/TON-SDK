@@ -235,7 +235,7 @@ impl ContractImage {
     pub fn msg_address(&self, workchain_id: i32) -> MsgAddressInt {
         match workchain_id / 128 {
             0 => MsgAddressInt::with_standart(None, workchain_id as i8, self.id.clone()).unwrap(),
-            _ => MsgAddressInt::with_variant(None, workchain_id, self.id.clone()).unwrap(),
+            _ => MsgAddressInt::with_variant(None, workchain_id, self.id.0.clone()).unwrap(),
         }
     }
 
@@ -543,7 +543,7 @@ impl Contract {
 
     /// Returns contract's identifier
     pub fn id(&self) -> Result<AccountId> {
-        Ok(self.id.get_address())
+        Ok(AccountId(self.id.get_address()))
     }
 
     /// Returns contract's balance in NANO grams
