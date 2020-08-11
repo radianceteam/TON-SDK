@@ -724,6 +724,7 @@ ton_client/platforms/ton-client-web"""
                             steps {
                                 dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/output') {
                                     script {
+                                        sh "pwd; ls -la"
                                         stash allowEmpty: true, includes: '*.gz', name: 'rn-ios-bin'
                                     }
                                 }
@@ -804,6 +805,7 @@ ton_client/platforms/ton-client-web"""
                             steps {
                                 dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/output') {
                                     script {
+                                        sh "pwd; ls -la"
                                         stash allowEmpty: true, includes: '*.gz', name: 'rn-android-bin'
                                     }
                                 }
@@ -1113,6 +1115,7 @@ ton_client/platforms/ton-client-web"""
                         unstash 'nj-windows-bin'
                         unstash 'nj-darwin-bin'
                         unstash 'web-bin'
+                        sh "pwd; ls -la"
                         def deployPath = GIT_BRANCH
                         // def deployPath = 'tmp_sdk'
                         if(GIT_BRANCH == "${getVar(G_binversion)}-rc") {
