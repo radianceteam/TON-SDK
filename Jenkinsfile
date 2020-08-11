@@ -1084,7 +1084,8 @@ ton_client/platforms/ton-client-web"""
         stage('Deploy to bucket') {
             when { 
                 expression {
-                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                 }
             }
             steps {
@@ -1103,7 +1104,8 @@ ton_client/platforms/ton-client-web"""
                         unstash 'nj-windows-bin'
                         unstash 'nj-darwin-bin'
                         unstash 'web-bin'
-                        def deployPath = 'tmp_sdk'
+                        def deployPath = GIT_BRANCH
+                        // def deployPath = 'tmp_sdk'
                         if(GIT_BRANCH == "${getVar(G_binversion)}-rc") {
                             deployPath = ''
                             sh """
