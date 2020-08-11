@@ -512,7 +512,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -579,7 +580,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -640,7 +642,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -714,7 +717,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -793,7 +797,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -872,7 +877,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -947,7 +953,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -1000,7 +1007,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
@@ -1059,7 +1067,8 @@ ton_client/platforms/ton-client-web"""
                         stage('Deploy') {
                             when { 
                                 expression {
-                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    // return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc"
+                                    return GIT_BRANCH == 'master' || GIT_BRANCH ==~ '^PR-[0-9]+' || GIT_BRANCH == "${getVar(G_binversion)}-rc" || GIT_BRANCH == 'fix-react-build'
                                 }
                             }
                             steps {
