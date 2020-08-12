@@ -722,7 +722,8 @@ ton_client/platforms/ton-client-web"""
                                 }
                             }
                             steps {
-                                dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/output') {
+                                // dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/output') {
+                                dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/bin') {
                                     script {
                                         sh "pwd; ls -la"
                                         stash allowEmpty: true, includes: '*.gz', name: 'rn-ios-bin'
@@ -803,7 +804,8 @@ ton_client/platforms/ton-client-web"""
                                 }
                             }
                             steps {
-                                dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/output') {
+                                // dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/output') {
+                                dir('tonlabs/TON-SDK/ton_client/platforms/ton-client-react-native/bin') {
                                     script {
                                         sh "pwd; ls -la"
                                         stash allowEmpty: true, includes: '*.gz', name: 'rn-android-bin'
