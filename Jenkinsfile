@@ -31,11 +31,7 @@ def buildImagesMap() {
     G_images.put('ton-executor', params.image_ton_executor)
     G_images.put('ton-labs-executor', params.image_ton_labs_executor)
     G_images.put('tvm-linker', params.image_tvm_linker)
-    if (params.image_ton_sdk == '') {
-        G_images.put('ton-sdk', "tonlabs/ton-sdk:${GIT_COMMIT}")
-    } else {
-        G_images.put('ton-sdk', params.image_ton_sdk)
-    }
+    G_images.put('ton-sdk', "")
 }
 
 def buildBranchesMap() {
@@ -210,6 +206,9 @@ def fetchJobData(job_data) {
                     break
                 case "TON_LABS_ABI":
                     changeParam('image_ton_labs_abi', "${val}")
+                    break
+                case "TON_SDK":
+                    changeParam('image_ton_sdk', "${val}")
                     break
             }
         }
@@ -454,11 +453,17 @@ Possible RC: ${getVar(G_binversion)}-rc"""
                         }
                     }
                 }
-                stage('TON-SDK job') {
+                stage('TON-SDK') {
                     steps {
                         script {
                             def job_data = build job: 'Builder/services/TON-SDK', parameters: G_params
-                            fetchJobData(job_data)
+                            def image_ton_sdk = null
+                            try {
+                                image_ton_sdk = job_data.getBuildVariables()['IMAGE']
+                                changeParam('image_ton_sdk', image_ton_sdk)
+                            } catch(ex) {
+                                echo "No IMAGE variable returned"
+                            }
                         }
                     }
                 }
