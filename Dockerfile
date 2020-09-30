@@ -3,6 +3,7 @@ ARG TON_LABS_BLOCK_IMAGE=tonlabs/ton-labs-block:latest
 ARG TON_LABS_VM_IMAGE=tonlabs/ton-labs-vm:latest
 ARG TON_LABS_ABI_IMAGE=tonlabs/ton-labs-abi:latest
 ARG TON_LABS_EXECUTOR_IMAGE=tonlabs/ton-labs-executor:latest
+ARG TON_LABS_BLOCK_JSON_IMAGE=tonlabs/ton-labs-block-json:latest
 ARG TON_SDK_IMAGE=tonlabs/ton-sdk:latest
 
 FROM alpine:latest as ton-sdk-src
@@ -19,6 +20,7 @@ FROM $TON_LABS_BLOCK_IMAGE as ton-labs-block-src
 FROM $TON_LABS_VM_IMAGE as ton-labs-vm-src
 FROM $TON_LABS_ABI_IMAGE as ton-labs-abi-src
 FROM $TON_LABS_EXECUTOR_IMAGE as ton-labs-executor-src
+FROM $TON_LABS_BLOCK_JSON_IMAGE as ton-labs-block-json-src
 FROM $TON_SDK_IMAGE as ton-sdk-source
 
 FROM alpine:latest as ton-sdk-full
@@ -30,10 +32,12 @@ COPY --from=ton-labs-block-src    --chown=jenkins:jenkins /tonlabs/ton-labs-bloc
 COPY --from=ton-labs-vm-src       --chown=jenkins:jenkins /tonlabs/ton-labs-vm       /tonlabs/ton-labs-vm
 COPY --from=ton-labs-abi-src      --chown=jenkins:jenkins /tonlabs/ton-labs-abi      /tonlabs/ton-labs-abi
 COPY --from=ton-labs-executor-src --chown=jenkins:jenkins /tonlabs/ton-labs-executor /tonlabs/ton-labs-executor
+COPY --from=ton-labs-block-json-src    --chown=jenkins:jenkins /tonlabs/ton-labs-block-json    /tonlabs/ton-labs-block-json
 COPY --from=ton-sdk-source        --chown=jenkins:jenkins /tonlabs/TON-SDK           /tonlabs/TON-SDK
 WORKDIR /tonlabs/ton-labs-executor
 RUN sed -e "s/\/tonlabs\/ton-block/\/tonlabs\/ton-labs-block/g" Cargo.toml | \
     sed -e "s/\/tonlabs\/ton-types/\/tonlabs\/ton-labs-types/g" | \
+    sed -e "s/\/tonlabs\/ton-block-json/\/tonlabs\/ton-labs-block-json/g" | \
     sed -e "s/\/tonlabs\/ton-vm/\/tonlabs\/ton-labs-vm/g" > tmp.toml && \
     rm Cargo.toml && mv tmp.toml Cargo.toml
 WORKDIR /tonlabs
@@ -51,5 +55,6 @@ COPY --from=ton-sdk-full --chown=jenkins:jenkins /tonlabs/ton-labs-vm    /tonlab
 COPY --from=ton-sdk-full --chown=jenkins:jenkins /tonlabs/ton-labs-block /tonlabs/ton-labs-block
 COPY --from=ton-sdk-full --chown=jenkins:jenkins /tonlabs/ton-labs-abi   /tonlabs/ton-labs-abi
 COPY --from=ton-sdk-full --chown=jenkins:jenkins /tonlabs/ton-labs-executor   /tonlabs/ton-labs-executor
+COPY --from=ton-sdk-full --chown=jenkins:jenkins /tonlabs/ton-labs-block-json    /tonlabs/ton-labs-block-json
 COPY --from=ton-sdk-full --chown=jenkins:jenkins /tonlabs/TON-SDK        /tonlabs/TON-SDK
 WORKDIR /tonlabs/TON-SDK
