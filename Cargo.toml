@@ -4,6 +4,7 @@ members = [
     "ton_client/client",
     "toncli",
     "api/test",
+    "ton_client/platforms/ton-client-jni",
 ]
 
 exclude = [
